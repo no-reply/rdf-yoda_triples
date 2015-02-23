@@ -29,6 +29,6 @@ module RDF::YodaTriples
     end
 
     # Human readable name for this format
-    def self.name; "N-Triples"; end
+    def self.name; "Yoda Triples"; end
   end
 end
