@@ -3,8 +3,13 @@ require 'rdf'
 module RDF::YodaTriples
   class Writer < RDF::NTriples::Writer
     def format_triple(subject, predicate, object, options = {})
-      "%s %s %s ." % [object, subject, predicate].map { |value| format_term(value, options) }
-    end
+      if ( predicate == RDF::RDFS.label or
+           predicate == RDF::RDFS.comment )
+        ""
+      else
+        "%s %s %s ." % [object, subject, predicate].map { |value| format_term(value, options) }
+      end
+  end
   end
 
   class Format < RDF::Format
