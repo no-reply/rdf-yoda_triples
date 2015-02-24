@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/no-reply/rdf-yoda_triples'
   s.email       = 'tom@dp.la'
   s.summary     = %q{An RDF serialization for Jedi.}
-  s.description = %q{Subject Object Predicate, hmmmmm?}
+  s.description = %q{Object Subject Predicate, hmmmmm?}
   s.license     = "Unlicense"
   s.required_ruby_version     = '>= 1.9.3'
 
@@ -18,5 +18,4 @@ Gem::Specification.new do |s|
 
   s.add_dependency('rdf', '~> 1.1')
   s.add_development_dependency('pry')
-
 end
