@@ -1,7 +1,9 @@
 Yoda Triples
 ============
 
-Object Subject Predicate, hmmmmmmmm? This way Yoda speaks: <http://en.wikipedia.org/wiki/Object%E2%80%93subject%E2%80%93verb#Fictitious_languages>.
+Object Subject Predicate, mmgh?
+
+This way Yoda speaks: <http://en.wikipedia.org/wiki/Object%E2%80%93subject%E2%80%93verb#Fictitious_languages>.
 
 Usage
 -----
@@ -25,5 +27,5 @@ graph << RDF::Statement(RDF::URI('http://example.org/yoda'), RDF::RDFS.label, RD
 graph << RDF::Statement(RDF::URI('http://example.org/yoda'), RDF::RDFS.comment, RDF::Literal('Yoda is a small and taciturn creature who speaks with object-subject-verb word order'))
 graph << RDF::Statement(RDF::URI('http://example.org/yoda'), RDF::RDFS.member, RDF::URI('http://en.wikipedia.org/wiki/Galactic_Republic'))
 graph.dump :yodatriples
-# => "\n\n<http://en.wikipedia.org/wiki/Galactic_Republic> <http://example.org/yoda> <http://www.w3.org/2000/01/rdf-schema#member> .\n" 
+# => "\n\n<http://en.wikipedia.org/wiki/Galactic_Republic> <http://example.org/yoda> <http://www.w3.org/2000/01/rdf-schema#member> .\n"
 ```
