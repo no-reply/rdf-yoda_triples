@@ -1,6 +1,28 @@
 require 'rdf'
 
 module RDF::YodaTriples
+  def self.way_of_the_force
+    <<EOM
+< If you choose the quick and easy path as
+Vader did - you will become an agent of evil. >
+        \
+         \         ____
+          \     _.' :  `._
+            .-.'`.  ;   .'`.-.
+   __      / : ___ ;  /___ ;  \      __
+ ,'_ ""--.:__;".-.";: :".-.":__;.--"" _`,
+ :' `.t""--.. '<@.`;_  ',@>` ..--""j.' `;
+      `:-.._J '-.-'L__ `-- ' L_..-;'
+        "-.__ ;  .-"  "-.  : __.-"
+            L ' /.------. ' J
+             "-.   "--"   .-"
+            __.l"-:_JL_;-";.__
+         .-j/'.;  ;""""  / .'"-.
+EOM
+  end
+
+  puts way_of_the_force
+
   class Writer < RDF::NTriples::Writer
     def format_triple(subject, predicate, object, options = {})
       if ( predicate == RDF::RDFS.label or
