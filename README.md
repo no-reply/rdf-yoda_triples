@@ -20,17 +20,7 @@ reader.new(graph.dump(:yodatriples)).each_statement do |statement|
 end
 ```
 
-Yoda is a taciturn creature so extraneous description is stripped from the yodatriples output, notably rdfs:label and rdfs:comment
+Specification
+--------------
 
-```ruby
-graph = RDF::Graph.new
-require 'rdf'
-require 'rdf/yoda_triples'
-
-graph = RDF::Graph.new
-graph << RDF::Statement(RDF::URI('http://example.org/yoda'), RDF::RDFS.label, RDF::Literal('Yoda'))
-graph << RDF::Statement(RDF::URI('http://example.org/yoda'), RDF::RDFS.comment, RDF::Literal('Yoda is a small and taciturn creature who speaks with object-subject-verb word order'))
-graph << RDF::Statement(RDF::URI('http://example.org/yoda'), RDF::RDFS.member, RDF::URI('http://en.wikipedia.org/wiki/Galactic_Republic'))
-graph.dump :yodatriples
-# => "\n\n<http://en.wikipedia.org/wiki/Galactic_Republic> <http://example.org/yoda> <http://www.w3.org/2000/01/rdf-schema#member> .\n"
-```
+For more information, see the [RDF 1.1 Y-Triples](http://azaroth42.github.io/rdflib-ytriples/docs/) draft specification.
