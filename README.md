@@ -12,7 +12,12 @@ Usage
 graph = RDF::Graph.new
 graph << RDF::Statement(RDF::URI('http://example.org/yoda'), RDF.type, RDF::URI('http://example.org/jedi'))
 graph.dump :yodatriples
-# => "<http://example.org/jedi> <http://example.org/yoda> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> .\n"
+# => "<http://example.org/jedi> <http://example.org/yoda> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> mmgh?\n"
+
+reader = RDF::Reader.for(:yodatriples)
+reader.new(graph.dump(:yodatriples)).each_statement do |statement|
+  puts statement.inspect
+end
 ```
 
 Yoda is a taciturn creature so extraneous description is stripped from the yodatriples output, notably rdfs:label and rdfs:comment
