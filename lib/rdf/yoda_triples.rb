@@ -25,20 +25,42 @@ EOM
 
   class Writer < RDF::NTriples::Writer
     def format_triple(subject, predicate, object, options = {})
-      if ( predicate == RDF::RDFS.label or
-           predicate == RDF::RDFS.comment )
-        ""
-      else
-        "%s %s %s mmgh?" % [object, subject, predicate].map { |value| format_term(value, options) }
-      end
+      "%s %s %s mmgh?" % [object, subject, predicate].map { |value| format_term(value, options) }
+    end
   end
+
+  class Reader < RDF::NTriples::Reader
+    def read_triple
+      loop do
+        readline.strip! # EOFError thrown on end of input
+        line = @line    # for backtracking input in case of parse error
+
+        begin
+          unless blank? || read_comment
+            object    = read_uriref || read_node || read_literal || fail_object
+            subject   = read_uriref || read_node || fail_subject
+            predicate = read_uriref(:intern => true) || fail_predicate
+
+            if validate? && !read_eos
+              raise RDF::ReaderError.new("ERROR [line #{lineno}] Expected end of statement (found: #{current_line.inspect})",
+                                         lineno: lineno)
+            end
+            return [subject, predicate, object]
+          end
+        rescue RDF::ReaderError => e
+          @line = line  # this allows #read_value to work
+          raise e
+        end
+      end
+    end
   end
 
   class Format < RDF::Format
-    content_type     'application/prs.yoda-triples', :extension => :yt, :alias => ['text/plain', 'application/prs.y-triples']
+    content_type     'application/y-triples', :extension => :yt, 
+                     :alias => ['text/plain', 'application/prs.yoda-triples', 'application/prs.y-triples']
     content_encoding 'utf-8'
 
-    # reader { RDF::YodaTriples::Reader }
+    reader { RDF::YodaTriples::Reader }
     writer { RDF::YodaTriples::Writer }
 
     def self.detect(sample)
