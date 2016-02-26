@@ -24,3 +24,8 @@ Specification
 --------------
 
 For more information, see the [RDF 1.1 Y-Triples](http://azaroth42.github.io/rdflib-ytriples/docs/) draft specification.
+
+License
+------
+
+This is free and unencumbered public domain software. For more information, see <http://unlicense.org/> or the accompanying [UNLICENSE](UNLICENSE) file.
