@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "rdf-yoda_triples"
-  s.version     = '0.1.0.pre'
+  s.version     = '0.1.0'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Tom Johnson"]
   s.homepage    = 'https://github.com/no-reply/rdf-yoda_triples'
